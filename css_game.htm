@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!DOCTYPE html>
 <html>
 <head>
 	<META http-equiv=content-type content="text/html; charset=UTF-8">
@@ -6,14 +6,18 @@
 	<link href="animation.css" rel="stylesheet" type="text/css">
 <style TYPE="text/css">
 <!--
-.enemy {	
+.enemy {
 	position: absolute;
 	top: -200px;
 	left: -200px;
 	width: 64px;
 	height: 48px;
-	-moz-appearance: button;
+	-moz-appearance: none;
 	-webkit-appearance: button;
+	appearance: none;
+}
+.enemy::-ms-check {
+	display: none;
 }
 .enemy:checked{
 	background-image: url('images/item.png')!important;
@@ -21,6 +25,10 @@
 	height: 32px;
 	position: static;
 	-webkit-animation-name: none;
+	animation-name: none !important;
+}
+.enemy:checked::-ms-check {
+	display: none;
 }
 #screen{
 	background-color: #000000;
@@ -290,7 +298,7 @@
 </form>
 <div>
 	JavaScriptを使わず、CSSとHTMLで作ったクリックシューティングゲームです。<br>
-	Chrome / Safariの最新版で動きます。IE / Firefoxでは動きません。<br>
+	IE / Chrome / Safariの最新版で動きます。Firefoxではデザインが崩れます。<br>
 	<br>
 	● 操作方法<br>
 	- 移動する牛をクリックすると捕まえることができ、スコアが増えます。全部で101匹います。<br>
@@ -303,6 +311,14 @@
 	このソフトの画像は、<a href="http://www.tekepon.net/fsm">REFMAP</a>が配布しているフリー画像素材を加工して使用しています。このソフト内で使用されている画像を、このゲームを遊ぶ以外の用途には使用しないで下さい<br>
 	<br>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	Array.apply(null, document.getElementsByClassName("enemy")).forEach(function(enemy){
+		enemy.checked = false;
+	});
+}, false);
+</script>
 
 </body>
 </html>

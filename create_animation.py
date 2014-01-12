@@ -20,11 +20,24 @@ straightLine = """
 	-webkit-transform: scale(${last_scale});
   }
 }
+@keyframes ${name} {
+  0% {
+    top: ${first_top}px;
+    left: ${first_left}px;
+	transform: scale(${first_scale});
+  }
+  100% {
+    top: ${last_top}px;
+    left: ${last_left}px;
+	transform: scale(${last_scale});
+  }
+}
 input#${name}{
 	background-image: url('${image_url}');
 	-webkit-animation-name: ${name};
 	-webkit-animation-duration: ${duration}s;
 	-webkit-animation-delay: ${start_time}s;
+	animation: ${name} ${duration}s ${start_time}s;
 }
 """
 
@@ -55,11 +68,38 @@ bounce = """
     left: ${high2_left}px;
   }
 }
+@keyframes ${name} {
+  0% {
+    top: ${low0_top}px;
+    left: ${low0_left}px;
+  }
+  20% {
+    top: ${high0_top}px;
+    left: ${high0_left}px;
+  }
+  40% {
+    top: ${low1_top}px;
+    left: ${low1_left}px;
+  }
+  60% {
+    top: ${high1_top}px;
+    left: ${high1_left}px;
+  }
+  80% {
+    top: ${low2_top}px;
+    left: ${low2_left}px;
+  }
+  100% {
+    top: ${high2_top}px;
+    left: ${high2_left}px;
+  }
+}
 input#${name}{
 	background-image: url('${image_url}');
 	-webkit-animation-name: ${name};
 	-webkit-animation-duration: ${duration}s;
 	-webkit-animation-delay: ${start_time}s;
+	animation: ${name} ${duration}s ${start_time}s;
 }
 """
 
